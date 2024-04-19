@@ -4,7 +4,9 @@
   "description": "backend mongodb",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "vercel-build": "echo hello",
+    "build": "echo 'No build step required for backend'"
   },
   "author": "",
   "license": "ISC",
