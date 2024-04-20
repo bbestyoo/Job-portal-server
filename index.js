@@ -1,7 +1,6 @@
 const express = require("express")
 const cors = require("cors")
 const app = express()
-// require("./config/database")
 const mongoose = require("mongoose")
 app.use(express.json())
 app.use(cors())
@@ -16,18 +15,20 @@ const apply = require("./controller/apply")
 const upload = require("./multer/multer")
 const getUser = require("./controller/User")
 const chart = require("./controller/chart");
+require('dotenv').config()
+const port = process.env.PORT
 
 
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/job-portal", {
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => console.log("connected to database"));
 
 
-
+   
 
 app.get("/api/getJob",getJob)
 app.get("/api/User",auth,getUser)
@@ -48,6 +49,6 @@ app.get("/", function (req,res){
     res.send("Hello there")
 })
 
-app.listen(8000, ()=>{
+app.listen(port, ()=>{
     console.log("server started...")
 })
