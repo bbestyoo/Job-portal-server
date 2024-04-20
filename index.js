@@ -8,18 +8,21 @@ app.use(express.static("public"))
 const Signup = require("./controller/Signup")
 const Login = require("./controller/Login")
 const { createJob, getJob, deleteJob, getHotJobs, getJobById, editJob } = require("./controller/job")
-const auth = require("./middleware/auth")
+const auth = require("./middleware/auth");
 const authRoutes = require("./routes/authRoutes")
-const { isJobSeeker } = require("./middleware/role")
-const apply = require("./controller/apply")
-const upload = require("./multer/multer")
+const { isJobSeeker } = require("./middleware/role");
+const apply = require("./controller/apply");
+const upload = require("./multer/multer");
 const getUser = require("./controller/User")
 const chart = require("./controller/chart");
 require('dotenv').config()
 const port = process.env.PORT
 
+
+
+
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://job-portal-ten-alpha.vercel.app',
   credentials: true, // If you're sending cookies or authorization headers
 }));
 
@@ -54,6 +57,10 @@ app.get("/", function (req,res){
     res.send("Hello there")
 })
 
+
+
 app.listen(port, ()=>{
     console.log("server started...")
 })
+
+
