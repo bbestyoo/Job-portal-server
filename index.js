@@ -18,6 +18,11 @@ const chart = require("./controller/chart");
 require('dotenv').config()
 const port = process.env.PORT
 
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true, // If you're sending cookies or authorization headers
+}));
+
 
 
 mongoose
