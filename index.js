@@ -21,10 +21,10 @@ const port = process.env.PORT
 
 
 
-app.use(cors({
-  origin: 'https://job-portal-ten-alpha.vercel.app',
-  credentials: true, // If you're sending cookies or authorization headers
-}));
+// app.use(cors({
+//   origin: 'https://job-portal-ten-alpha.vercel.app',
+//   credentials: true, // If you're sending cookies or authorization headers
+// }));
 
 
 
