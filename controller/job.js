@@ -130,6 +130,14 @@ const getHotJobs = async (req, res, next) => {
     next(err);
   }
 };
+const getPopJobs = async (req, res, next) => {
+  try {
+    const allJobs = await jobModel.find().sort({_id: -1}).limit(5);
+    res.status(200).send(allJobs);
+  } catch (err) {
+    next(err);
+  }
+};
 
 const editJob = async (req, res, next) => {
   try {
@@ -165,4 +173,5 @@ module.exports = {
   getJobById,
   getHotJobs,
   editJob,
+  getPopJobs
 };

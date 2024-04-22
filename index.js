@@ -7,7 +7,7 @@ app.use(cors())
 app.use(express.static("public"))
 const Signup = require("./controller/Signup")
 const Login = require("./controller/Login")
-const { createJob, getJob, deleteJob, getHotJobs, getJobById, editJob } = require("./controller/job")
+const { createJob, getJob, deleteJob, getHotJobs, getJobById, editJob, getPopJobs } = require("./controller/job")
 const auth = require("./middleware/auth");
 const authRoutes = require("./routes/authRoutes")
 const { isJobSeeker } = require("./middleware/role");
@@ -17,14 +17,6 @@ const getUser = require("./controller/User")
 const chart = require("./controller/chart");
 require('dotenv').config()
 const port = process.env.PORT
-
-
-
-
-// app.use(cors({
-//   origin: 'https://job-portal-ten-alpha.vercel.app',
-//   credentials: true, // If you're sending cookies or authorization headers
-// }));
 
 
 
@@ -49,6 +41,8 @@ app.get("/api/chart/job-seeker", auth, chart.barDiagram);
 app.post("/api/createJob",auth,upload.single('image'),createJob)
 app.delete("/api/deleteJob/:id",auth,deleteJob)
 app.get("/api/getHotJob",getHotJobs)
+app.get("/api/getPopJobs",getPopJobs)
+
 app.get("/api/getJobById/:id",getJobById)
 app.put("/api/editJob/:id",auth,editJob)
 app.post("/api/applyJob",auth, isJobSeeker, apply)
